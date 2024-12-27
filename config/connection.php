@@ -24,7 +24,7 @@ class Connection
 
     public function getConnection()
     {
-        return $this->connection;
+        return $this->connection; 
     }
 }
 
