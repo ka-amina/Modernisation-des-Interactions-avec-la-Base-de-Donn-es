@@ -7,7 +7,7 @@ $player = new Player();
 // add new player
 
 // $addPlayer= $player->create([
-// 'name'=> 'amina',
+// 'name'=> 'test',
 // 'club_id'=> 3,
 // 'nationality' => 'mac',
 // 'position_name' =>'ST',

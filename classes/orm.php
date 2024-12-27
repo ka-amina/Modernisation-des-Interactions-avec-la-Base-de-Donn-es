@@ -6,10 +6,8 @@ class ORM
     protected $table;
     protected $connection;
 
-    public function __construct()
-    {
-        $conn = new Connection();
-        $this->connection = $conn->getConnection();
+    public function __construct() {
+        $this->connection = Connection::connect();
     }
 
     public function read()

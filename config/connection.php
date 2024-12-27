@@ -6,28 +6,22 @@ $dotenv->load();
 
 class Connection
 {
-    private $connection;
-    public function __construct()
+    private static $connection = null;
+    public static function connect()
     {
-        try {
-            $this->connection = new PDO(
-                "mysql:host=" . $_ENV['HOST'] . ";dbname=" . $_ENV['DATABASE'],
-                $_ENV['USERNAME'],
-                $_ENV['PASSWORD']
-            );
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $error) {
-            error_log($error->getMessage());
-            die("Connection failed: Unable to connect to the database.");
+        if (self::$connection === null) {
+            try {
+                self::$connection = new PDO(
+                    "mysql:host=" . $_ENV['HOST'] . ";dbname=" . $_ENV['DATABASE'],
+                    $_ENV['USERNAME'],
+                    $_ENV['PASSWORD']
+                );
+                self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $error) {
+                die("Connection failed: " . $error->getMessage());
+            }
         }
-    }
-
-    public function getConnection()
-    {
-        return $this->connection; 
+        return self::$connection;
     }
 }
-
-
-
 ?>
