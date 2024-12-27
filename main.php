@@ -8,4 +8,9 @@ foreach ($players as $p) {
     echo "ID: {$p['player_id']}, Name: {$p['name']}, Rating: {$p['rating']}";
 }
 
+
+$deletePlayer= $player->delete(['player_id'=>8]);
+echo "Number of Rows Deleted: $deletePlayer";
+
+
 ?>
